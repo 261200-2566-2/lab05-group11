@@ -1,4 +1,4 @@
-public abstract class RPGCharacters implements RPGCharacter {
+public abstract class RPGCharacters implements RPGCharacter, Accessories {
     protected String name;
     protected double baseHP;
     protected double baseMana;
@@ -53,7 +53,7 @@ public abstract class RPGCharacters implements RPGCharacter {
 
     @Override
     public void friendBuff() {
-        currentHP += 5;
+        currentHP += 30;
     }
 
     @Override

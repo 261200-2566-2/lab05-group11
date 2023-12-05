@@ -1,8 +1,8 @@
 public class Main {
 //    String[] nameHero = ["nameHero", "baseHP", "baseMana", "baseRunSpeed"];
-    static String[] unjiMan = {"UnjiMan", "100", "60", "10"};
-    static String[] spermMan = {"SpermMan", "110", "50", "10"};
-    static String[] pennisMan = {"PennisMan", "90", "70", "12"};
+    static String[] unjiMan = {"UnjiMan", "300", "60", "10"};
+    static String[] spermMan = {"SpermMan", "200", "50", "10"};
+    static String[] pennisMan = {"PennisMan", "250", "70", "12"};
 
 //    String[] nameSword = {"NameEquip", "Damage", "RunSpeedDecrease"};
     static String[] sword = {"sword", "25", "-1"};
@@ -13,14 +13,40 @@ public class Main {
     static String[] shield = {"shield", "10", "-2"};
     static String[] pan = {"pan", "5", "-1"};
 
+//    Arm
+    static String Ring = "Ring";
+    static String Gauntlet = "Gauntlet";
+    static String Bracelet = "Bracelet";
+
+//    Leg
+    static String Boots = "Boots";
+    static String Anklet = "Anklet";
+
     public static void main(String[] args) {
-        Equipment hero = new Equipment(unjiMan, sword, shield);
+        UnjiMan hero = new Equipment(unjiMan, dagger, pan);
+        hero.emoteSmile();
 
-        Equipment enemy = new Equipment(spermMan, dagger, pan);
+        SpermMan enemy = new Equipment(spermMan,knife, shield);
+        enemy.emoteLove();
 
+        hero.status();
         enemy.status();
-        enemy.emoteHulk();
+
+        ((Equipment) hero).getLeg(Boots);
+        ((Equipment) hero).statusAccessories();
+        ((Equipment) hero).getArm(Ring);
+        ((Equipment) hero).statusAccessories();
+        ((Equipment) hero).kickEmote();
+
+        hero.attack(enemy);
+        hero.attack(enemy);
+        enemy.def();
+
+        enemy.getAtk();
+        enemy.friendBuff();
         enemy.status();
+
+        hero.status();
 
     }
 }

@@ -1,4 +1,4 @@
-public class Equipment extends RPGCharacters implements RPGCharacter {
+public class Equipment extends RPGCharacters implements UnjiMan, SpermMan, PennisMan, Ring, Gauntlet, Bracelet, Boots, Anklet {
     private String nameSword;
     private double swordBaseDamage;
     private double runSpeedDecreaseSword;
@@ -15,6 +15,9 @@ public class Equipment extends RPGCharacters implements RPGCharacter {
     private boolean lostWeight = false;
     private boolean getSpeed = false;
     private boolean getAtk = false;
+
+    private String nameArm = "";
+    private String nameLeg = "";
 
     private double runSpeed;
 
@@ -48,11 +51,13 @@ public class Equipment extends RPGCharacters implements RPGCharacter {
         swordDamage = swordBaseDamage * (1 * (0.1 + levelSword));
         if(getAtk) swordDamage *= 1.75;
         if(friendBuff) swordDamage += 5;
+        if(!nameArm.isEmpty()) swordDamage += 2;
         shieldDef = shieldBaseDef*(0.8+ 0.05*levelShield);
         if(friendBuff) shieldDef += 5;
         runSpeed = baseRunSpeed + runSpeedDecreaseSword + runSpeedDecreaseShield;
         if(lostWeight) runSpeed += 2;
         if(getSpeed) runSpeed = 16;
+        if(!nameLeg.isEmpty()) runSpeed += 2;
     }
 
     public void statusEquipment() {
@@ -91,7 +96,7 @@ public class Equipment extends RPGCharacters implements RPGCharacter {
         swordDamage += 5;
         shieldDef += 5;
         friendBuff = true;
-        System.out.println(name + " ใช้ friendBuff ทำให้ HP+5 Def+15 Damage+5");
+        System.out.println(name + " ใช้ friendBuff ทำให้ HP+30 Def+15 Damage+5");
     }
 
     @Override
@@ -147,11 +152,64 @@ public class Equipment extends RPGCharacters implements RPGCharacter {
 
     @Override
     public void emoteLove() {
-        System.out.println(name + " ทำท่า ❤");
+        System.out.println(name + " ทำท่า 🫶");
     }
 
     @Override
     public void emoteHulk() {
         System.out.println(name + " ทำท่า 💪");
+    }
+
+    @Override
+    public void statusAccessories() {
+        System.out.println("///////////////////////////////////////////");
+        System.out.println("Your AccessoriesArm: " + nameArm);
+        System.out.println("Your AccessoriesLeg: " + nameLeg);
+        System.out.println("///////////////////////////////////////////");
+    }
+
+    @Override
+    public void fuckyouEmote() {
+        System.out.println(name + " ทำท่า 👃");
+    }
+
+    @Override
+    public void getArm(String arm) {
+        if (arm.equals("Ring") || arm.equals("Gauntlet") || arm.equals("Bracelet")) {
+            this.nameArm = arm;
+            System.out.println(name + "ได้ใส่ " + nameArm + " แล้วทำให้ Damage+2");
+        } else {
+            this.nameArm = "";
+        }
+    }
+
+    @Override
+    public void snapEmote() {
+        System.out.println(name + " ทำท่า 👋");
+    }
+
+    @Override
+    public void holdUp2FingerEmote() {
+        System.out.println(name + " ทำท่า ✌️");
+    }
+
+    @Override
+    public void getLeg(String leg) {
+        if (leg.equals("Boots") || leg.equals("Anklet")) {
+            this.nameLeg = leg;
+            System.out.println(name + "ได้ใส่ " + nameLeg + " แล้วทำให้ MoveSpeed+2");
+        } else {
+            this.nameLeg = "";
+        }
+    }
+
+    @Override
+    public void kickEmote() {
+        System.out.println(name + " ทำท่า 🦵");
+    }
+
+    @Override
+    public void handStandEmote() {
+        System.out.println(name + " ทำท่า 🤸‍♀️");
     }
 }
