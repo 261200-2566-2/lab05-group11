@@ -1,7 +1,7 @@
-public class RPGCharacters implements RPGCharacter {
+public abstract class RPGCharacters implements RPGCharacter {
     protected String name;
-    protected double maxHP;
-    protected double maxMana;
+    protected double baseHP;
+    protected double baseMana;
     protected double baseRunSpeed;
     protected int level;
     protected double currentHP;
@@ -9,12 +9,12 @@ public class RPGCharacters implements RPGCharacter {
 
     RPGCharacters (String[] Hero){
         this.name = Hero[0];
-        this.maxHP = Double.parseDouble(Hero[1]);
-        this.maxMana = Double.parseDouble(Hero[2]);
+        this.baseHP = Double.parseDouble(Hero[1]);
+        this.baseMana = Double.parseDouble(Hero[2]);
         this.baseRunSpeed = Double.parseDouble(Hero[3]);
         this.level = 1;
-        this.currentHP = maxHP;
-        this.currentMana = maxMana;
+        this.currentHP = baseHP;
+        this.currentMana = baseMana;
     }
 
     public void status() {
@@ -54,23 +54,10 @@ public class RPGCharacters implements RPGCharacter {
     @Override
     public void friendBuff() {
         currentHP += 5;
-        currentMana += 5;
-    }
-
-    @Override
-    public void ward() {
-        // Implement ward logic here
-    }
-
-    @Override
-    public int friendHealing() {
-        // Implement friendHealing logic here
-        return 0;
     }
 
     @Override
     public int resurrect(String nameFriend) {
-        // Implement resurrect logic here
         return 0;
     }
 
@@ -80,4 +67,5 @@ public class RPGCharacters implements RPGCharacter {
             currentMana = 0;  // Ensure Mana doesn't go below 0
         }
     }
+
 }

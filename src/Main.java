@@ -1,5 +1,5 @@
 public class Main {
-//    String[] nameHero = ["nameHero", "maxHP", "maxMana", "baseRunSpeed"];
+//    String[] nameHero = ["nameHero", "baseHP", "baseMana", "baseRunSpeed"];
     static String[] unjiMan = {"UnjiMan", "100", "60", "10"};
     static String[] spermMan = {"SpermMan", "110", "50", "10"};
     static String[] pennisMan = {"PennisMan", "90", "70", "12"};
@@ -15,17 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
         Equipment hero = new Equipment(unjiMan, sword, shield);
-        hero.status();
-        hero.statusEquipment();
 
         Equipment enemy = new Equipment(spermMan, dagger, pan);
-        enemy.status();
 
-        hero.attack(enemy);
-        enemy.def();
         enemy.status();
-
-        hero.status();
+        enemy.emoteHulk();
+        enemy.status();
 
     }
 }
